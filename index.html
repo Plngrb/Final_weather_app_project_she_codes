@@ -18,20 +18,25 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="weather_app">
         <div class="row">
           <div class="col-6">
-            <h1>Paris</h1>
+            <h1 id="city">Paris</h1>
             <ul>
-              <li>Wednesday 15:12</li>
-              <li>Broken clouds</li>
-              <li>Humidity: <span class="humidity"> 68%</span></li>
+              <li id="date">Wednesday 15:12</li>
+              <li id="description">Broken clouds</li>
               <li>
-                Wind:
-                <span class="wind_speed"> 5.14 km/h</span>
+                Humidity : <span class="humidity" id="humidity"> 68</span>
+                <span class="humidity"> %</span>
+              </li>
+              <li>
+                Wind :
+                <span class="wind_speed" id="wind-speed"> 5.14</span>
+                <span class="wind_speed"> km/h</span>
               </li>
             </ul>
           </div>
@@ -39,14 +44,14 @@
             <div class="weather_temp">
               <div class="d-flex weather-temperature">
                 <img src="medias/cloud.png" alt="cloud" />
-                <strong>19</strong>
+                <strong id="temperature">19</strong>
                 <span class="unit">°C</span>
               </div>
             </div>
           </div>
         </div>
         <hr />
-        <small
+        <small class="footer"
           >This project has been coded by Pauline Gruber and is
           <a
             href="https://github.com/Plngrb/Final_weather_app_project_she_codes"
@@ -59,8 +64,3 @@
     <script src="src/app.js"></script>
   </body>
 </html>
-
-<div class="d-flex weather-temperature">
-  <img src="" alt="Clear" id="icon" />
-  <div><strong id="temperature"></strong><span class="units"> °C</span></div>
-</div>

@@ -20,6 +20,9 @@ li {
   font-weight: 300;
   line-height: 30px;
 }
+li:first-letter {
+  text-transform: capitalize;
+}
 
 .weather_app {
   max-width: 780px;
@@ -57,4 +60,8 @@ li {
   position: relative;
   top: 65px;
   left: 21px;
+}
+.footer {
+  text-align: center;
+  margin: 0 auto;
 }
