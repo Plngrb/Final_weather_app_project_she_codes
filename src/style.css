@@ -1,1 +1,60 @@
+body {
+  background-color: #dee8f7;
+  font-family: "Roboto", sans-serif;
+}
 
+h1 {
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 60px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  color: grey;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.weather_app {
+  max-width: 780px;
+  margin: 60px auto;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: white;
+  padding: 60px;
+}
+
+.humidity {
+  color: #115c9e;
+  font-weight: 600;
+}
+.wind_speed {
+  color: #115c9e;
+  font-weight: 600;
+}
+.weather_temp img {
+  height: 120px;
+  width: 120px;
+  position: relative;
+  top: 43px;
+}
+.weather_temp strong {
+  font-size: 75px;
+  font-weight: 400;
+  position: relative;
+  top: 50px;
+  left: 20px;
+}
+.weather_temp .unit {
+  font-size: 34px;
+  font-weight: 300;
+  position: relative;
+  top: 65px;
+  left: 21px;
+}
