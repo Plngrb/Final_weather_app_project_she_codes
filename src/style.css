@@ -3,6 +3,11 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+hr {
+  color: #dee8f7;
+  border-top: 4px solid #dee8f7;
+}
+
 h1 {
   font-size: 45px;
   font-weight: 500;
@@ -11,6 +16,7 @@ h1 {
 ul {
   margin: 0;
   padding: 0;
+  margin-bottom: 25px;
 }
 
 li {
@@ -46,22 +52,44 @@ li:first-letter {
   width: 120px;
   position: relative;
   top: 43px;
+  left: -10px;
 }
 .weather_temp strong {
   font-size: 75px;
   font-weight: 400;
   position: relative;
   top: 50px;
-  left: 20px;
+  left: -30px;
 }
 .weather_temp .unit {
   font-size: 34px;
   font-weight: 300;
   position: relative;
   top: 65px;
-  left: 21px;
+  left: -30px;
 }
 .footer {
   text-align: center;
   margin: 0 auto;
+  margin-top: 10px;
+}
+
+.form-control {
+  background-color: #dee8f7;
+  border-color: #dee8f7;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 35px;
+}
+.btn {
+  line-height: 35px;
+  width: 150px;
+}
+
+.search_bar {
+  display: flex;
+  justify-content: center;
+}
+.weather_information {
+  padding-left: 70px;
 }
