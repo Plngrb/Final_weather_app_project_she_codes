@@ -29,12 +29,18 @@ function displayLiveData(response) {
   let windSpeedElement = document.querySelector("#wind-speed");
   let temperatureElement = document.querySelector("#temperature");
   let dateElement = document.querySelector("#date");
+  let weatherIconElement = document.querySelector("#weather-icon");
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windSpeedElement.innerHTML = response.data.wind.speed;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   dateElement.innerHTML = currentDate(response.data.dt);
+  weatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  weatherIconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let apiKey = "d2f1ee1358def379d685af37a2ea3c2a";
