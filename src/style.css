@@ -59,14 +59,35 @@ li:first-letter {
   font-weight: 400;
   position: relative;
   top: 50px;
-  left: -30px;
+  left: -10px;
 }
-.weather_temp .unit {
-  font-size: 34px;
+.weather_temp .unit_celsius {
+  font-size: 25px;
   font-weight: 300;
   position: relative;
   top: 65px;
-  left: -30px;
+  left: 0px;
+}
+
+.weather_temp .active {
+  cursor: default;
+  color: black;
+  text-decoration: none;
+}
+
+.weather_temp .unit_fahrenheit {
+  font-size: 25px;
+  font-weight: 300;
+  position: relative;
+  top: 65px;
+  left: 8px;
+}
+.weather_temp .separator {
+  font-size: 25px;
+  font-weight: 300;
+  position: relative;
+  top: 65px;
+  left: 5px;
 }
 .footer {
   text-align: center;
@@ -91,5 +112,5 @@ li:first-letter {
   justify-content: center;
 }
 .weather_information {
-  padding-left: 70px;
+  padding-left: 40px;
 }

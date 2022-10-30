@@ -25,7 +25,7 @@
         
 
       <div class="weather_app">
-          <form class="search_bar">
+          <form class="search_bar" id="search-bar">
 <div class="row g-3">
   <div class="col-9">
     <input type="text" class="form-control width:200px" id="input-search" placeholder="Enter a city" autocomplete="off">
@@ -38,27 +38,32 @@
 <div class="weather_information">
         <div class="row">
           <div class="col-6">
-            <h1 id="city">Paris</h1>
+            <h1 id="city"></h1>
             <ul>
-              <li id="date">Wednesday 15:12</li>
-              <li id="description">Broken clouds</li>
+             
+              <li id="description"></li>
               <li>
-                Humidity : <span class="humidity" id="humidity"> 68</span>
+                Humidity : <span class="humidity" id="humidity"></span>
                 <span class="humidity"> %</span>
               </li>
               <li>
                 Wind :
-                <span class="wind_speed" id="wind-speed"> 5.14</span>
+                <span class="wind_speed" id="wind-speed"></span>
                 <span class="wind_speed"> km/h</span>
               </li>
+               <li>Last updated : <span id="date">Wednesday 15:12</span></li>
             </ul>
           </div>
           <div class="col-6">
             <div class="weather_temp">
               <div class="d-flex weather-temperature">
-                <img src="" alt="" id="weather-icon" />
-                <strong id="temperature">19</strong>
-                <span class="unit">°C</span>
+                <img src="" id="weather-icon" />
+                <strong id="temperature"></strong>
+                    <a href="#" class="active unit_celsius" id="unit-celsius-element">
+                        °C</a>
+                <span class="separator">|</span>
+                    <a href="#" class="unit_fahrenheit" id="unit-fahrenheit-element">
+                    °F</a>
               </div>
             </div>
           </div>
