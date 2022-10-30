@@ -67,6 +67,7 @@ li:first-letter {
   position: relative;
   top: 65px;
   left: 0px;
+  text-decoration: none;
 }
 
 .weather_temp .active {
@@ -81,6 +82,7 @@ li:first-letter {
   position: relative;
   top: 65px;
   left: 8px;
+  text-decoration: none;
 }
 .weather_temp .separator {
   font-size: 25px;
