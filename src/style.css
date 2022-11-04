@@ -116,3 +116,22 @@ li:first-letter {
 .weather_information {
   padding-left: 40px;
 }
+
+.weather_forecast {
+  text-align: center;
+}
+
+.weather_forecast_temperature_max {
+  color: #115c9e;
+  font-weight: 600;
+}
+
+.weather_forecast_temperature_min {
+  color: #6596c1;
+  font-weight: 600;
+}
+
+.weather_forecast_day {
+  font-size: 16px;
+  font-weight: 400;
+}
