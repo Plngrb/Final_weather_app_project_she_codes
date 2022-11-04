@@ -119,6 +119,7 @@ li:first-letter {
 
 .weather_forecast {
   text-align: center;
+  margin-left: 45px;
 }
 
 .weather_forecast_temperature_max {

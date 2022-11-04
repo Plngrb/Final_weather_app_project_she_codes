@@ -76,6 +76,34 @@ function convertTemperatureInCelsius(event) {
   fahrenheitUnit.classList.remove("active");
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2">  
+        <ul>
+            <span class="weather_forecast_day">${day}
+            </span></ul>
+        <ul><img src="medias/cloud.png" alt="cloud" width="50px"></ul>
+        <ul>
+            <span class="weather_forecast_temperature_max">
+            21°</span>
+            <span>&nbsp;</span>
+            <span class="weather_forecast_temperature_min">13°</span></ul>
+        
+    </div>
+    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let temperatureInCelsius = null;
 
 let form = document.querySelector("#search-bar");
@@ -88,3 +116,4 @@ let celsiusUnit = document.querySelector("#unit-celsius-element");
 celsiusUnit.addEventListener("click", convertTemperatureInCelsius);
 
 search("paris");
+displayForecast();
