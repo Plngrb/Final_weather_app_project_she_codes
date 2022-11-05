@@ -119,7 +119,8 @@ li:first-letter {
 
 .weather_forecast {
   text-align: center;
-  margin-left: 45px;
+  margin-left: -35px;
+  margin-top: 30px;
 }
 
 .weather_forecast_temperature_max {
@@ -128,11 +129,11 @@ li:first-letter {
 }
 
 .weather_forecast_temperature_min {
-  color: #6596c1;
+  color: #8bd0f8;
   font-weight: 600;
 }
 
 .weather_forecast_day {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
 }

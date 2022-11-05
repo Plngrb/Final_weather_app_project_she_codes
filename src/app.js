@@ -22,6 +22,20 @@ function currentDate(timestamp) {
   return `${day} ${hours} : ${minutes}`;
 }
 
+function formatTimestamp(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = weekDays[date.getDay()];
+  return day;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "bfaea905c0a0ddc23bt84531317o8165";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayLiveData(response) {
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -30,23 +44,23 @@ function displayLiveData(response) {
   let temperatureElement = document.querySelector("#temperature");
   let dateElement = document.querySelector("#date");
   let weatherIconElement = document.querySelector("#weather-icon");
-  temperatureInCelsius = response.data.main.temp;
+  temperatureInCelsius = response.data.temperature.current;
 
-  cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  humidityElement.innerHTML = response.data.main.humidity;
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = Math.round(temperatureInCelsius);
-  dateElement.innerHTML = currentDate(response.data.dt);
-  weatherIconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  dateElement.innerHTML = currentDate(response.data.time);
+  weatherIconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+  getForecast(response.data.coordinates);
+  console.log(response.data.coordinates);
 }
 
 function search(city) {
-  let apiKey = "d2f1ee1358def379d685af37a2ea3c2a";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = "bfaea905c0a0ddc23bt84531317o8165";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
   axios.get(apiUrl).then(displayLiveData);
 }
 
@@ -76,27 +90,35 @@ function convertTemperatureInCelsius(event) {
   fahrenheitUnit.classList.remove("active");
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-        <div class="col-2">  
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col-2 p-6">  
         <ul>
-            <span class="weather_forecast_day">${day}
+            <span class="weather_forecast_day">${formatTimestamp(
+              forecastDay.time
+            )}
             </span></ul>
-        <ul><img src="medias/cloud.png" alt="cloud" width="50px"></ul>
+        <ul><img src="${
+          forecastDay.condition.icon_url
+        }" alt="cloud" width="80px"></ul>
         <ul>
             <span class="weather_forecast_temperature_max">
-            21°</span>
+            ${Math.round(forecastDay.temperature.maximum)}°</span>
             <span>&nbsp;</span>
-            <span class="weather_forecast_temperature_min">13°</span></ul>
+            <span class="weather_forecast_temperature_min">${Math.round(
+              forecastDay.temperature.minimum
+            )}°</span></ul>
         
     </div>
     `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -116,4 +138,3 @@ let celsiusUnit = document.querySelector("#unit-celsius-element");
 celsiusUnit.addEventListener("click", convertTemperatureInCelsius);
 
 search("paris");
-displayForecast();
