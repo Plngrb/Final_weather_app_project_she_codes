@@ -32,7 +32,6 @@ function formatTimestamp(timestamp) {
 function getForecast(coordinates) {
   let apiKey = "bfaea905c0a0ddc23bt84531317o8165";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -54,13 +53,12 @@ function displayLiveData(response) {
   dateElement.innerHTML = currentDate(response.data.time);
   weatherIconElement.setAttribute("src", `${response.data.condition.icon_url}`);
   getForecast(response.data.coordinates);
-  console.log(response.data.coordinates);
 }
 
 function search(city) {
   let apiKey = "bfaea905c0a0ddc23bt84531317o8165";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayLiveData);
 }
 
@@ -70,24 +68,6 @@ function handleSubmit(event) {
   let city = document.querySelector("#city");
   search(searchInput.value);
   city.innerHTML = `${searchInput.value}`;
-}
-
-function convertTemperatureInFahrenheit(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(temperatureInCelsius * (9 / 5) + 32);
-  //Remove the active class of the celsius link
-  celsiusUnit.classList.remove("active");
-  //Add the active class on the fahrenheit link
-  fahrenheitUnit.classList.add("active");
-}
-
-function convertTemperatureInCelsius(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(temperatureInCelsius);
-  celsiusUnit.classList.add("active");
-  fahrenheitUnit.classList.remove("active");
 }
 
 function displayForecast(response) {
@@ -126,15 +106,7 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-let temperatureInCelsius = null;
-
 let form = document.querySelector("#search-bar");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitUnit = document.querySelector("#unit-fahrenheit-element");
-fahrenheitUnit.addEventListener("click", convertTemperatureInFahrenheit);
-
-let celsiusUnit = document.querySelector("#unit-celsius-element");
-celsiusUnit.addEventListener("click", convertTemperatureInCelsius);
 
 search("paris");
